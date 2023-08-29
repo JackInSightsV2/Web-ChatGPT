@@ -8,7 +8,7 @@ Web-ChatGPT is a Python-based tool that combines the capabilities of OpenAI's Ch
 2. **Web Scraping**: Scrapes content from specified websites.
 3. **Summary**: Summarizes lengthy content for better readability.
 4. **Web App**: A user-friendly interface using Streamlit for quick research tasks.
-5. **API Endpoint**: FastAPI-based endpoint for easy integration into other applications.
+5. **API Endpoint**: FastAPI-based endpoint for easy integration into other applications. (app_bak.py)
 
 ## Dependencies
 1. `os`
