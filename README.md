@@ -36,13 +36,23 @@ Save the above in a file called .env
 
 ### Running as a Streamlit Web App
 
-Execute the Python script:
+Download the app.py and requirement.txt, create your .env file in the same folder and add your API keys
+
+```bash
+$ pip install -r requirements.txt
+```
 
 ```bash
 $ streamlit run app.py
 ```
 
 After running the script, Streamlit will provide a local URL where you can access the web application.
+
+Sometimes you may need to provide the entire string to get streamlit to run
+
+```bash
+$ C:\Users\user\AppData\Roaming\Python\Python311\Scripts\streamlit run "D:/Coding/Research Bot/app.py"
+```
 
 ### Running as an API Endpoint with FastAPI
 
