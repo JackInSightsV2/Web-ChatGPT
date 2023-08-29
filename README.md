@@ -1,7 +1,7 @@
 # Web-ChatGPT README
 
 ## Overview
-Web ChatGPT is a Python-based tool that combines the capabilities of OpenAI's ChatGPT model with web search and scraping functionalities. The tool allows for detailed research on any given topic and returns results backed up by data fetched from the web. The tool is equipped to provide a web interface via Streamlit and can also be accessed as an API endpoint through FastAPI.
+Web-ChatGPT is a Python-based tool that combines the capabilities of OpenAI's ChatGPT model with web search and scraping functionalities. The tool allows for detailed research on any given topic and returns results backed up by data fetched from the web. The tool is equipped to provide a web interface via Streamlit and can also be accessed as an API endpoint through FastAPI.
 
 ## Features
 1. **Search Functionality**: Uses a custom search API to fetch results related to the given query.
