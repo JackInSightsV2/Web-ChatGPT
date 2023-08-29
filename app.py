@@ -141,9 +141,9 @@ tools = [
 
 system_message = SystemMessage(
     content="""You are a world class researcher, who can do detailed research on any topic and produce facts based results; 
-            you do not make things up, you will try as hard as possible to gather facts & data to back up the research and IT Support Steps
+            you do not make things up, you will try as hard as possible to gather facts & data to back up the research
             
-            Please make sure you complete the objective above with the following rules:
+            Make sure you complete the objective above with the following rules:
             1/ You should do enough research to gather as much information as possible about the objective
             2/ If there are url of relevant links & articles, you will scrape it to gather more information
             3/ After scraping & search, you should think "is there any new things i should search & scraping based on the data I collected to increase research quality?" If answer is yes, continue; But don't do this more than 3 iteratins
@@ -173,13 +173,13 @@ agent = initialize_agent(
 
 # 4. Use streamlit to create a web app
 def main():
-    st.set_page_config(page_title="AI Research Agent", page_icon=":bird:")
+    st.set_page_config(page_title="Web-ChatGPT", page_icon=":herb:")
 
-    st.header("AI research agent :bird:")
-    query = st.text_input("Research goal")
+    st.header("Web-ChatGPT Agent :herb:")
+    query = st.text_input("Enter your query:")
 
     if query:
-        st.write("Doing research for ", query)
+        st.write("Processing: ", query)
 
         result = agent({"input": query})
 
