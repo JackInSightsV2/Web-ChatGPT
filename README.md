@@ -1,4 +1,4 @@
-# Web ChatGPT README
+# Web-ChatGPT README
 
 ## Overview
 Web ChatGPT is a Python-based tool that combines the capabilities of OpenAI's ChatGPT model with web search and scraping functionalities. The tool allows for detailed research on any given topic and returns results backed up by data fetched from the web. The tool is equipped to provide a web interface via Streamlit and can also be accessed as an API endpoint through FastAPI.
@@ -28,6 +28,8 @@ Make sure to set the following environment variables:
 - `SERP_API_KEY`: Your API key for the custom search engine.
 - `OPENAI_API_KEY`: Your API key for OpenAI.
 
+Save the above in a file called .env
+
 ## How to Run
 
 ### Running as a Streamlit Web App
@@ -35,10 +37,10 @@ Make sure to set the following environment variables:
 Execute the Python script:
 
 ```bash
-$ python web_chatgpt.py
+$ streamlit run app.py
 ```
 
-After running the script, Streamlit will provide a local URL where you can access the Web ChatGPT application.
+After running the script, Streamlit will provide a local URL where you can access the web application.
 
 ### Running as an API Endpoint with FastAPI
 
@@ -68,4 +70,4 @@ Feel free to fork this repository and submit pull requests for any improvements 
 
 ---
 
-Created by the Web ChatGPT team.
+Originally created by https://github.com/JayZeeDesign
