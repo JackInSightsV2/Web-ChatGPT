@@ -10,7 +10,7 @@ Web-ChatGPT is a Python-based tool that combines the capabilities of OpenAI's Ch
 2. **Web Scraping**: Scrapes content from specified websites.
 3. **Summary**: Summarizes lengthy content for better readability.
 4. **Web App**: A user-friendly interface using Streamlit for quick research tasks.
-5. **API Endpoint**: FastAPI-based endpoint for easy integration into other applications. (app_bak.py)
+5. **API Endpoint**: FastAPI-based endpoint for easy integration into other applications. (app_api.py)
 
 ## Dependencies
 1. `os`
@@ -54,7 +54,7 @@ Sometimes you may need to provide the entire string to get streamlit to run
 $ C:\Users\user\AppData\Roaming\Python\Python311\Scripts\streamlit run "D:/Coding/Research Bot/app.py"
 ```
 
-### Running as an API Endpoint with FastAPI
+### Running as an API Endpoint with FastAPI (app_api.py)
 
 Execute the following command:
 
