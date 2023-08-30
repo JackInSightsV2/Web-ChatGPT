@@ -23,6 +23,10 @@ brwoserless_api_key = os.getenv("BROWSERLESS_API_KEY")
 serper_api_key = os.getenv("SERP_API_KEY")
 open_api_key = os.getenv("OPENAI_API_KEY")
 
+# Global Variable
+model_choice = "gpt-3.5-turbo-16k"
+llm = ChatOpenAI(temperature=0, model=model_choice)
+
 # 1. Tool for search
 
 def search(query):
@@ -84,7 +88,7 @@ def scrape_website(objective: str, url: str):
 
 
 def summary(objective, content):
-    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613")
+    llm = ChatOpenAI(temperature=0, model=model_choice)
 
     text_splitter = RecursiveCharacterTextSplitter(
         separators=["\n\n", "\n"], chunk_size=10000, chunk_overlap=500)
@@ -149,7 +153,9 @@ system_message = SystemMessage(
             3/ After scraping & search, you should think "is there any new things i should search & scraping based on the data I collected to increase research quality?" If answer is yes, continue; But don't do this more than 3 iteratins
             4/ You should not make things up, you should only write facts & data that you have gathered
             5/ In the final output, You should include all reference data & links to back up your research; You should include all reference data & links to back up your research
-            6/ In the final output, You should include all reference data & links to back up your research; You should include all reference data & links to back up your research"""
+            6/ In the final output, You should include all reference data & links to back up your research; You should include all reference data & links to back up your research
+            7/ At the very end of the prompt add a note of additional related user prompts that could be entered
+            """
 )
 
 agent_kwargs = {
@@ -157,7 +163,10 @@ agent_kwargs = {
     "system_message": system_message,
 }
 
-llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k")
+def update_llm(model_choice):
+    global llm
+    llm = ChatOpenAI(temperature=0, model=model_choice)
+
 memory = ConversationSummaryBufferMemory(
     memory_key="memory", return_messages=True, llm=llm, max_token_limit=2000)
 
@@ -177,10 +186,12 @@ def main():
 
     st.header("Web-ChatGPT Agent :herb:")
     query = st.text_input("Enter your query:")
+    model_choice = st.selectbox("Choose a model:", ["gpt-3.5-turbo-16k", "gpt-4-32k"])
+    update_llm(model_choice)
 
     if query:
         st.write("Processing: ", query)
-
+        print(model_choice)
         result = agent({"input": query})
 
         st.info(result['output'])
