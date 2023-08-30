@@ -32,6 +32,11 @@ Make sure to set the following environment variables:
 
 Save the above in a file called .env
 
+## Bugs
+
+Model changing is not working at the moment. Need to get the global variable correct. 
+
+
 ## How to Run
 
 ### Running as a Streamlit Web App
