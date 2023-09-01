@@ -53,7 +53,7 @@ def scrape_website(objective: str, url: str):
     # scrape website, and also will summarize the content based on objective if the content is too large
     # objective is the original objective & task that user give to the agent, url is the url of the website to be scraped
 
-    print("Scraping website...")
+    print("Scraping websites...")
     # Define the headers for the request
     headers = {
         'Cache-Control': 'no-cache',
@@ -76,7 +76,7 @@ def scrape_website(objective: str, url: str):
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, "html.parser")
         text = soup.get_text()
-        print("CONTENTTTTTT:", text)
+        print("CONTENT:", text)
 
         if len(text) > 10000:
             output = summary(objective, text)
@@ -88,8 +88,7 @@ def scrape_website(objective: str, url: str):
 
 
 def summary(objective, content):
-    llm = ChatOpenAI(temperature=0, model=model_choice)
-
+    global llm
     text_splitter = RecursiveCharacterTextSplitter(
         separators=["\n\n", "\n"], chunk_size=10000, chunk_overlap=500)
     docs = text_splitter.create_documents([content])
@@ -182,16 +181,18 @@ agent = initialize_agent(
 
 # 4. Use streamlit to create a web app
 def main():
+    global model_choice 
+    global llm  
     st.set_page_config(page_title="Web-ChatGPT", page_icon=":herb:")
-
     st.header("Web-ChatGPT Agent :herb:")
     query = st.text_input("Enter your query:")
-    model_choice = st.selectbox("Choose a model:", ["gpt-3.5-turbo-16k", "gpt-4-32k"])
+    st.write("Current Model: " , model_choice.upper())
+    model_choice = st.selectbox("Choose a model:", ["gpt-3.5-turbo-16k", "gpt-4"])
     update_llm(model_choice)
 
     if query:
         st.write("Processing: ", query)
-        print(model_choice)
+        print("Using: ", model_choice)
         result = agent({"input": query})
 
         st.info(result['output'])
@@ -202,16 +203,14 @@ if __name__ == '__main__':
 
 
 # 5. Set this as an API endpoint via FastAPI
-app = FastAPI()
+# app = FastAPI()
 
+# class Query(BaseModel):
+#     query: str
 
-class Query(BaseModel):
-    query: str
-
-
-@app.post("/")
-def researchAgent(query: Query):
-    query = query.query
-    content = agent({"input": query})
-    actual_content = content['output']
-    return actual_content
+# @app.post("/")
+# def researchAgent(query: Query):
+#     query = query.query
+#     content = agent({"input": query})
+#     actual_content = content['output']
+#     return actual_content
