@@ -34,7 +34,7 @@ Save the above in a file called .env
 
 ## Bugs
 
-Model changing is not working at the moment. Need to get the global variable correct. 
+Model changing is not working at the moment. Need to get the global variable correct. Also not every API key has access to GPT-4. I need to create a fallback function it GPT4 fails it reverts to 3.5-16k
 
 
 ## How to Run
